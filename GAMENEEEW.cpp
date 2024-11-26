@@ -212,14 +212,6 @@ void enemyh() {
 int main() {
 	std::srand(time(0));
 	clear_display();
-	std::cout << "\t\t Welcome! \n PRESS 'ESC' TO EXIT \n PRESS 'SPACE' TO SIMULATION\n PRESS 'ENTER' TO GAME";
-
-	char ch;
-	int code;
-	ch = _getch();
-	code = static_cast<int>(ch);
-
-	if (ch == 27) {
 		std::cout << "\n           PEENEENDNDJ      ";
 		//std::exit(0);
 		clear_display();
@@ -229,24 +221,4 @@ int main() {
 		display();
 		std::string dir_e = enem.search();
 		std::cout << dir_e;
-	}
-	else if (ch == 32) {
-		while (1) {
-			display();
-			Sleep(1000);
-			enemyh();
-		}
-	}
-	else if (ch == 13) {
-		enemy enem;
-		enem.init();
-		enemy enemf;
-		enemf.init();
-		while (1) {
-			display();
-			movement();
-		}
-	}
-
-
 }
