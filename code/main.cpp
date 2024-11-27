@@ -1,9 +1,10 @@
 ﻿//подключение библиотек
 #include <iostream>
 #include <conio.h>
-#include <windows.h>
 #include <string>
 #include <ctime>
+#include <unistd.h>
+
 
 //ТРОНЕШЬ ЭТИ ПЕРЕМЕННЫЕ ГЕЙ
 int coordinates_x;
@@ -37,6 +38,24 @@ public:
 			if (symbol == '0') { dir_e = "LEFT_UP"; return dir_e; }
 			y--;
 		 }
+		y = crds_y_e;
+		for(int x = crds_x_e; x >= 0; x--){
+			symbol = field[x][y];
+			if(symbol == '0'){dir_e = "RIGHT_UP"; return dir_e;}
+			y++;		
+		}
+		y = crds_y_e;
+		for(int x = crds_x_e; x > 9; x++){
+			symbol = field[x][y];
+			if(symbol == '0'){dir_e = "RIGHT_DOWN"; return dir_e;}
+			y++;		
+		}
+		y = crds_y_e;
+		for(int x = crds_x_e; x > 9; x++){
+			symbol = field[x][y];
+			if(symbol == '0'){dir_e = "LEFT_DOWN"; return dir_e;}
+			y--;		
+		}
 		for (int i = crds_x_e; i >= 0; i--) {
 			symbol = field[i][crds_y_e];
 			if (symbol == '0') {dir_e = "UP";return dir_e; }
@@ -70,7 +89,7 @@ static void coordinates() {
 	}
 }
 static void display() {
-	Sleep(100);
+	sleep(0.25);
 	system("cls");
 	coordinates();
 	for (int a = 0; a < 10; a++) {
@@ -204,10 +223,7 @@ void movement() {
 int main() {
 	std::srand(time(0));
 	clear_display();
-<<<<<<<< HEAD:code/main.cpp
 	std::cout << "\t\t Welcome! \n PRESS 'ESC' TO EXIT \n PRESS 'SPACE' TO SIMULATION\n PRESS 'ENTER' TO GAME";
-========
->>>>>>>> d210fbd5824b66c0296bea7f092ade59ae3db958:main.cpp
 		std::cout << "\n           PEENEENDNDJ      ";
 		//std::exit(0);
 		clear_display();
@@ -217,9 +233,9 @@ int main() {
 		display();
 		std::string dir_e = enem.search();
 		std::cout << dir_e;
-<<<<<<<< HEAD:code/main.cpp
+
 	}
 
-========
-}
->>>>>>>> d210fbd5824b66c0296bea7f092ade59ae3db958:main.cpp
+
+
+
