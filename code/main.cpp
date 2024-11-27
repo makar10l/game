@@ -201,24 +201,13 @@ void movement() {
 	}
 }
 
-void enemyh() {
-	//clear_display();
-	int coordinates_x_en;
-	int coordinates_y_en;
-
-	coordinates_x_en = 0 + std::rand() % 10;
-	coordinates_y_en = 0 + std::rand() % 30;
-
-	field[coordinates_x_en][coordinates_y_en] = '#';
-	if (coordinates_x && coordinates_y == coordinates_x_en && coordinates_y_en) {
-		system("cls");
-	}
-
-}
 int main() {
 	std::srand(time(0));
 	clear_display();
+<<<<<<<< HEAD:code/main.cpp
 	std::cout << "\t\t Welcome! \n PRESS 'ESC' TO EXIT \n PRESS 'SPACE' TO SIMULATION\n PRESS 'ENTER' TO GAME";
+========
+>>>>>>>> d210fbd5824b66c0296bea7f092ade59ae3db958:main.cpp
 		std::cout << "\n           PEENEENDNDJ      ";
 		//std::exit(0);
 		clear_display();
@@ -228,5 +217,9 @@ int main() {
 		display();
 		std::string dir_e = enem.search();
 		std::cout << dir_e;
+<<<<<<<< HEAD:code/main.cpp
 	}
 
+========
+}
+>>>>>>>> d210fbd5824b66c0296bea7f092ade59ae3db958:main.cpp
