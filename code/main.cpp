@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <string>
 #include <ctime>
-#include <unistd.h>
+#include <windows.h>
 
 
 //ТРОНЕШЬ ЭТИ ПЕРЕМЕННЫЕ ГЕЙ
@@ -24,8 +24,8 @@ public:
 	int crds_y_e;
 
 	void init() {
-		crds_x_e =  0 + std::rand() % 10;
-		crds_y_e = 1 +std::rand() % 30;
+		crds_x_e = 0 + std::rand() % 10;
+		crds_y_e = 1 + std::rand() % 30;
 		field[crds_x_e][crds_y_e] = '#';
 	}
 
@@ -37,41 +37,41 @@ public:
 			symbol = field[x][y];
 			if (symbol == '0') { dir_e = "LEFT_UP"; return dir_e; }
 			y--;
-		 }
-		y = crds_y_e;
-		for(int x = crds_x_e; x >= 0; x--){
-			symbol = field[x][y];
-			if(symbol == '0'){dir_e = "RIGHT_UP"; return dir_e;}
-			y++;		
 		}
 		y = crds_y_e;
-		for(int x = crds_x_e; x > 9; x++){
+		for (int x = crds_x_e; x >= 0; x--) {
 			symbol = field[x][y];
-			if(symbol == '0'){dir_e = "RIGHT_DOWN"; return dir_e;}
-			y++;		
+			if (symbol == '0') { dir_e = "RIGHT_UP"; return dir_e; }
+			y++;
 		}
 		y = crds_y_e;
-		for(int x = crds_x_e; x > 9; x++){
+		for (int x = crds_x_e; x > 9; x++) {
 			symbol = field[x][y];
-			if(symbol == '0'){dir_e = "LEFT_DOWN"; return dir_e;}
-			y--;		
+			if (symbol == '0') { dir_e = "RIGHT_DOWN"; return dir_e; }
+			y++;
+		}
+		y = crds_y_e;
+		for (int x = crds_x_e; x > 9; x++) {
+			symbol = field[x][y];
+			if (symbol == '0') { dir_e = "LEFT_DOWN"; return dir_e; }
+			y--;
 		}
 		for (int i = crds_x_e; i >= 0; i--) {
 			symbol = field[i][crds_y_e];
-			if (symbol == '0') {dir_e = "UP";return dir_e; }
+			if (symbol == '0') { dir_e = "UP"; return dir_e; }
 		}
 		for (int i = crds_x_e; i > 10; i++) {
 			symbol = field[i][crds_y_e];
-			if (symbol == '0') { dir_e = "DOWN"; return dir_e;}
-			
+			if (symbol == '0') { dir_e = "DOWN"; return dir_e; }
+
 		}
 		for (int i = crds_y_e; i >= 0; i--) {
 			symbol = field[crds_x_e][i];
-			if (symbol == '0') { dir_e = "LEFT"; return dir_e;}
+			if (symbol == '0') { dir_e = "LEFT"; return dir_e; }
 		}
 		for (int i = crds_y_e; i >= 29; i++) {
 			symbol = field[crds_x_e][i];
-			if (symbol == '0') {  dir_e = "RIGHT"; return dir_e;}
+			if (symbol == '0') { dir_e = "RIGHT"; return dir_e; }
 		}
 		return dir_e;
 	}
@@ -89,14 +89,18 @@ static void coordinates() {
 	}
 }
 static void display() {
-	sleep(0.25);
-	system("cls");
+
+	//system("cls");
 	coordinates();
 	for (int a = 0; a < 10; a++) {
 		for (int i = 0; i < 30; i++) {
 			std::cout << field[a][i];
 		}
 		std::cout << std::endl;
+	}
+	Sleep(10);
+	for (int i = 0; i < 30; i++) {
+		std::cout << '/' << std::endl;
 	}
 
 }
@@ -120,7 +124,7 @@ void attack() {
 			if (i != coordinates_x - 1)
 				field[i + 1][coordinates_y] = '1';
 			display();
-			//Sleep(SPEED);
+			Sleep(100);
 			x = i;
 		}
 		field[x][coordinates_y] = '1';
@@ -133,7 +137,7 @@ void attack() {
 			if (i != coordinates_x + 1)
 				field[i - 1][coordinates_y] = '1';
 			display();
-			//Sleep(SPEED);
+			Sleep(100);
 			x = i;
 		}
 		field[x][coordinates_y] = '1';
@@ -146,7 +150,7 @@ void attack() {
 			if (i != coordinates_y + 1)
 				field[coordinates_x][i - 1] = '1';
 			display();
-			//Sleep(SPEED);
+			Sleep(100);
 			x = i;
 		}
 		field[coordinates_x][x] = '1';
@@ -159,7 +163,7 @@ void attack() {
 			if (i != coordinates_y - 1)
 				field[coordinates_x][i + 1] = '1';
 			display();
-			//Sleep(SPEED);
+			Sleep(100);
 			x = i;
 		}
 		field[coordinates_x][x] = '1';
@@ -223,19 +227,11 @@ void movement() {
 int main() {
 	std::srand(time(0));
 	clear_display();
-	std::cout << "\t\t Welcome! \n PRESS 'ESC' TO EXIT \n PRESS 'SPACE' TO SIMULATION\n PRESS 'ENTER' TO GAME";
-		std::cout << "\n           PEENEENDNDJ      ";
-		//std::exit(0);
-		clear_display();
-		field[0][0] = '0';
-		enemy enem;
-		enem.init();
+	field[0][0] = '0';
+	while (1) {
+		movement();
 		display();
-		std::string dir_e = enem.search();
-		std::cout << dir_e;
-
 	}
 
 
-
-
+}
