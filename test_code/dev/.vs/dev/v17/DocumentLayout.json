@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\test_code\\dev\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDA566C-410A-4E5D-AACC-E42345121102}|dev.vcxproj|C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\test_code\\dev\\dev.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9EDA566C-410A-4E5D-AACC-E42345121102}|dev.vcxproj|solutionrelative:dev.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\code\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\code\\main.cpp",
+              "RelativeDocumentMoniker": "..\\..\\code\\main.cpp",
+              "ToolTip": "C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\code\\main.cpp",
+              "RelativeToolTip": "..\\..\\code\\main.cpp",
+              "ViewState": "AQIAANEAAAAAAAAAAAAUwOIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-08T09:31:04.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dev.cpp",
+              "DocumentMoniker": "C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\test_code\\dev\\dev.cpp",
+              "RelativeDocumentMoniker": "dev.cpp",
+              "ToolTip": "C:\\Users\\\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440\\OneDrive\\Documents\\my projects\\game\\test_code\\dev\\dev.cpp",
+              "RelativeToolTip": "dev.cpp",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAFwAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-08T09:30:06.315Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

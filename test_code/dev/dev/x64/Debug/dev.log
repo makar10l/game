@@ -1,0 +1,3 @@
+﻿  dev.cpp
+C:\Users\Владимир\OneDrive\Documents\my projects\game\test_code\dev\dev.cpp(223,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  dev.vcxproj -> C:\Users\Владимир\OneDrive\Documents\my projects\game\test_code\dev\x64\Debug\dev.exe
