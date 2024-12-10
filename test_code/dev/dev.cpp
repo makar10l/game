@@ -1,9 +1,32 @@
 ﻿//подключение библиотек
 #include <iostream>
-#include <conio.h>
+#include <unistd.h>
 #include <string>
 #include <ctime>
-#include <windows.h>
+#include <curses.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <termios.h>
+#include <string.h>
+     
+     static struct termios stored_settings;
+     
+     void set_keypress(void)
+     {
+         struct termios new_settings;
+     
+         tcgetattr(0,&stored_settings);
+     
+         new_settings = stored_settings;
+     
+         /* Disable canonical mode, and set buffer size to 1 byte */
+         new_settings.c_lflag &= (~ICANON);
+         new_settings.c_cc[VTIME] = 0;
+         new_settings.c_cc[VMIN] = 1;
+     
+         tcsetattr(0,TCSANOW,&new_settings);
+         return;
+     }
 
 
 //ТРОНЕШЬ ЭТИ ПЕРЕМЕННЫЕ ГЕЙ
@@ -89,8 +112,8 @@ static void coordinates() {
 	}
 }
 static void display() {
-	Sleep(1000);
-	system("cls");
+
+	system("clear");
 	coordinates();
 	for (int i = 0; i <= 10; i++) {
 		for (int a = 0; a <= 30; a++) {
@@ -98,6 +121,7 @@ static void display() {
 		}
 		std::cout << std::endl;
 	}
+	//sleep(1);
 }
 
 static void clear_display() {
@@ -119,7 +143,7 @@ void attack() {
 			if (i != coordinates_x - 1)
 				field[i + 1][coordinates_y] = '1';
 			display();
-			Sleep(100);
+			sleep(0.25);
 			x = i;
 		}
 		field[x][coordinates_y] = '1';
@@ -132,7 +156,7 @@ void attack() {
 			if (i != coordinates_x + 1)
 				field[i - 1][coordinates_y] = '1';
 			display();
-			Sleep(100);
+			sleep(0.25);
 			x = i;
 		}
 		field[x][coordinates_y] = '1';
@@ -145,7 +169,7 @@ void attack() {
 			if (i != coordinates_y + 1)
 				field[coordinates_x][i - 1] = '1';
 			display();
-			Sleep(100);
+			sleep(0.25);
 			x = i;
 		}
 		field[coordinates_x][x] = '1';
@@ -158,7 +182,7 @@ void attack() {
 			if (i != coordinates_y - 1)
 				field[coordinates_x][i + 1] = '1';
 			display();
-			Sleep(100);
+			sleep(0.25);
 			x = i;
 		}
 		field[coordinates_x][x] = '1';
@@ -166,16 +190,16 @@ void attack() {
 }
 
 void movement() {
-	char ch;
-	int code;
-	ch = _getch();
-	code = static_cast<int>(ch);
+	int ch;
+	initscr();
+	keypad (stdscr, 1);
+	ch = getch();
 	//атака
 	if (ch == 32) {
 		attack();
 	}
 	//движение вперед
-	else if (ch == 72) {
+	else if (ch == KEY_UP) {
 		coordinates();
 
 		field[coordinates_x - 1][coordinates_y] = '0';
@@ -185,7 +209,7 @@ void movement() {
 		display();
 	}
 	//движение назад
-	else if (ch == 80) {
+	else if (ch == KEY_DOWN) {
 		coordinates();
 
 		field[coordinates_x + 1][coordinates_y] = '0';
@@ -195,7 +219,7 @@ void movement() {
 		display();
 	}
 	//движение вправо
-	else if (ch == 77) {
+	else if (ch == KEY_RIGHT) {
 		coordinates();
 
 		field[coordinates_x][coordinates_y + 1] = '0';
@@ -205,7 +229,7 @@ void movement() {
 		display();
 	}
 	//движение влево
-	else if (ch == 75) {
+	else if (ch == KEY_LEFT) {
 		coordinates();
 
 		field[coordinates_x][coordinates_y - 1] = '0';
@@ -217,17 +241,20 @@ void movement() {
 	else if (ch == 27) {
 		clear_display();
 	}
+	endwin();
 }
 
 int main() {
-	std::srand(time(0));
+	set_keypress();
+	//std::srand(time(0));
 	clear_display();
 	field[0][0] = '0';
 	display();
+	
+	
 	while (1) {
 		movement();
-
-	}
+}
 
 
 }

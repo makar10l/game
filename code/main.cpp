@@ -1,6 +1,6 @@
 ﻿//подключение библиотек
 #include <iostream>
-#include <conio.h>
+#include <unistd.h>
 #include <string>
 #include <ctime>
 #include <windows.h>
